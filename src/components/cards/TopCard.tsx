@@ -31,26 +31,29 @@ const TopCard = ({ stockName, currentPrice, alertPrice }: TopCardProps) => {
   return (
     <Box
       sx={{
-        border: "1px solid #ddd",
-        borderRadius: 4,
-        padding: 2,
-        backgroundColor: "#f9f9f9",
+        backgroundColor: "#222222",
         textAlign: "center",
-        marginBottom: 2,
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <Typography variant="h6" gutterBottom>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{
+          color: "white",
+        }}
+      >
         {stockName}
       </Typography>
 
-      <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+      >
         <Typography
           variant="h4"
           gutterBottom
           color={
             alertPrice === 0
-              ? "black"
+              ? "white"
               : currentPrice > alertPrice
               ? "green"
               : "red"
