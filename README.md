@@ -8,6 +8,7 @@ This is a project built with **Vite + React**, a fast and modern development env
    Run the following command to clone the repository:  
    ```bash
    git clone https://github.com/penaherrera/stock-watcher.git
+   
    cd stock-watcher
 
 2. **Install dependencies**  
@@ -22,7 +23,6 @@ This is a project built with **Vite + React**, a fast and modern development env
   Run the following command to start the project:
      ```bash
    npm run dev
-
 
 Here the google Drive link to access the env variables and a very short video explaining the code:
 https://drive.google.com/drive/folders/151tdCsNHtwZobah5SqcDFxF0AdG1gDoY?usp=drive_link
