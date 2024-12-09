@@ -1,4 +1,5 @@
 import { useState } from "react";
+import TopCard from "../cards/TopCard";
 import {
   TextField,
   Button,
@@ -19,6 +20,7 @@ const LeftForm = () => {
 
   const handleWebSocketMessage = (data: any) => {
     if (data.type === "trade" && data.data) {
+      console.log("data", data);
       const trade = data.data[0];
       const price = trade.p; // Current Price
       setCurrentPrice(price);
@@ -47,6 +49,16 @@ const LeftForm = () => {
 
   return (
     <Box sx={{ width: "100%", maxWidth: 400, margin: "auto", padding: 3 }}>
+      <Box sx={{ marginBottom: 3 }}>
+        {symbol && currentPrice !== null && (
+          <TopCard
+            stockName={symbol}
+            currentPrice={currentPrice}
+            alertPrice={alertPrice ?? 0}
+          />
+        )}
+      </Box>
+
       <Typography variant="h6" gutterBottom>
         Select Symbol and Set Alert
       </Typography>
@@ -59,8 +71,8 @@ const LeftForm = () => {
           onChange={(e) => setSymbol(e.target.value)}
           label="Select Symbol"
         >
-          <MenuItem value="BINANCE:BTCUSDT">BTC USDT</MenuItem>
-          <MenuItem value="BINANCE:ETHUSDT">ETH USDT</MenuItem>
+          <MenuItem value="BINANCE:BTCUSDT">BTC-USDT</MenuItem>
+          <MenuItem value="BINANCE:ETHUSDT">ETH-USDT</MenuItem>
         </Select>
       </FormControl>
 
@@ -94,13 +106,10 @@ const LeftForm = () => {
       </Box>
 
       <Box sx={{ marginTop: 3 }}>
-        <Typography variant="h6">
-          Current Price: {currentPrice ? `$${currentPrice}` : "N/A"}
-        </Typography>
         {alertPrice !== undefined && currentPrice !== null && (
           <Typography color={currentPrice > alertPrice ? "green" : "red"}>
-            The price is {currentPrice > alertPrice ? "above" : "below"} the
-            alert value of ${alertPrice}.
+            The current price is {currentPrice > alertPrice ? "above" : "below"}{" "}
+            the alert value of ${alertPrice}.
           </Typography>
         )}
       </Box>
